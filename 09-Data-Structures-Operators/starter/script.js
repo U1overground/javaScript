@@ -109,3 +109,11 @@ const printGoals = function (...players) {
 
 // 7.
 team1 < team2 && console.log('team 1 is more likely to win');
+
+// challenge 2
+// 1.
+for (const [i, player] of game.scored.entries()) {
+  console.log(`Goal ${i+1}: ${player}`)
+};
+
+// 2.
