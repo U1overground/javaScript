@@ -117,3 +117,9 @@ for (const [i, player] of game.scored.entries()) {
 };
 
 // 2.
+let average = 0;
+for (const odd of Object.values(game.odds)) {
+  average += odd;
+  average /= Object.values(game.odds).length;
+  console.log(average);
+}
