@@ -152,3 +152,8 @@ for (const [key, value] of gameEvents) {
   const half = key <= 45 ? 'FIRST' : 'SECOND';
   console.log(`[${half} HALF] ${key}: ${value}`);
 }
+
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.startsWith('_Delayed') ? 'NO' : ''}${type.replaceAll('-', ' ')} ${from} ${to} (${time.replace(':', 'h')})`;
+}
