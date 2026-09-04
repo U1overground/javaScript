@@ -84,6 +84,8 @@ const createUsernames = function (accs) {
 }
 
 createUsernames(accounts)
+
+const withdrawals = movements.filter(mov => mov < 0);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
