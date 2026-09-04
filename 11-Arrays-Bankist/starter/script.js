@@ -76,6 +76,14 @@ const displayMovements = function (movements) {
   });
 }
 displayMovements(account1.movements)
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner.toLowerCase().split(' ').map(name => name[0]).join('')
+  });
+}
+
+createUsernames(accounts)
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -87,6 +95,13 @@ const currencies = new Map([
 ]);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const movementsDescriptions = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrawal'} ${Math.abs(
+      mov
+    )}`
+);
 
 /////////////////////////////////////////////////
 containerApp.style.opacity = 100;
