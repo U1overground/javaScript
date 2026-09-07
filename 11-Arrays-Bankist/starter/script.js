@@ -86,15 +86,6 @@ const createUsernames = function (accs) {
 createUsernames(accounts)
 
 const withdrawals = movements.filter(mov => mov < 0);
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
-
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -104,6 +95,22 @@ const movementsDescriptions = movements.map(
       mov
     )}`
 );
+
+const calcDisplayBalance = function (balance) {
+  const balance = movements.reduce((acc, cur) => acc + cur, 0);
+  labelBalance.textContent = `${balance} EUR`;
+}
+
+calcDisplayBalance(account1.movements);
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// LECTURES
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
 
 /////////////////////////////////////////////////
 containerApp.style.opacity = 100;
