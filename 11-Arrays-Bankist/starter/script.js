@@ -102,6 +102,28 @@ const calcDisplayBalance = function (balance) {
 }
 
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes} EUR`;
+
+  const outcomes = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(outcomes)} EUR`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}EUR`;
+};
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -122,4 +144,12 @@ const calcAverageHumanAge = function (ages) {
   const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
 
   return average;
+}
+
+// Code Challenge 3
+const calcAverageHumanAge2 = function (ages) {
+  const average = ages
+    .map(age => ages <= 2 ? 2 * age : 16 + age * 4)
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age/arr.length, 0);
 }
